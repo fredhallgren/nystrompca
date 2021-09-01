@@ -1,0 +1,2 @@
+[run]
+include = nystrompca/algorithms/bound.py, nystrompca/algorithms/kernel_PCA.py, nystrompca/algorithms/kernel_PCR.py, nystrompca/algorithms/kernel_RR.py, nystrompca/algorithms/nystrom_KPCA.py, nystrompca/algorithms/nystrom_KPCR.py, nystrompca/algorithms/nystrom_KRR.py, nystrompca/base/kernel.py, nystrompca/base/transformation.py, nystrompca/base/regression.py, nystrompca/base/kernel_machine.py, nystrompca/base/nystrom_method.py, nystrompca/utils/utils.py, nystrompca/utils/logger.py

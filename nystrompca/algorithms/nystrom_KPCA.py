@@ -24,9 +24,9 @@ from typing import Tuple
 import numpy as np
 
 from nystrompca import KernelPCA
-from nystrompca.base import NystromMethod, Kernel
+from nystrompca.base import NystromMethod
 from nystrompca.utils import (get_inverse, get_eigendecomposition,
-                              get_kappa, flip_dimensions, demean_matrix)
+                              flip_dimensions)
 
 
 class NystromKPCA(KernelPCA, NystromMethod):

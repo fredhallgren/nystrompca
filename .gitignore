@@ -1,0 +1,16 @@
+*.swp
+.mypy_cache/
+__pycache__/
+.coverage
+.coverage.*
+build/
+dist/
+*.egg-info/
+.ipynb_checkpoints/
+*.png
+_build
+_templates
+_static
+docs/build
+*.dot
+*.vscode

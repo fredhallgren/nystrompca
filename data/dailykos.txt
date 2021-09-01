@@ -1,0 +1,33 @@
+Data Set Information
+
+D is the number of documents, W is the
+number of words in the vocabulary, and N is the total number of words
+in the collection (below, NNZ is the number of nonzero counts in the
+bag-of-words). After tokenization and removal of stopwords, the
+vocabulary of unique words was truncated by only keeping words that
+occurred more than ten times. Individual document names (i.e. a
+identifier for each docID) are not provided for copyright reasons.
+
+This data sets have no class labels, and for copyright reasons no
+filenames or other document-level metadata. These data sets are ideal
+for clustering and topic modeling experiments.
+
+
+KOS blog entries:
+orig source: dailykos.com
+D=3430
+W=6906
+N=467714
+
+Attribute Information:
+
+The format of the kos.dat file is NNZ triples:
+---
+docID wordID count
+docID wordID count
+docID wordID count
+docID wordID count
+...
+docID wordID count
+docID wordID count
+docID wordID count

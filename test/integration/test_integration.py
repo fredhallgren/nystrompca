@@ -154,17 +154,20 @@ def test_nystrom_pca_total_error():
 
     nkpca = NystromKPCA(m_subset=m)
 
-    X = get_magic_data(n)
+    def run_test(X):
+        nkpca.fit_transform(X)
 
-    nkpca.fit_transform(X)
+        nystrom_variance = np.sum(nkpca.explained_variance_)
 
-    nystrom_variance = np.sum(nkpca.explained_variance_)
+        K_tilde          = nkpca.K_nm @ get_inverse(nkpca.K_mm) @ nkpca.K_nm.T
+        K_tilde_p        = demean_matrix(K_tilde)
+        subset_variance  = np.trace(K_tilde_p) / n
 
-    K_tilde          = nkpca.K_nm @ get_inverse(nkpca.K_mm) @ nkpca.K_nm.T
-    K_tilde_p        = demean_matrix(K_tilde)
-    subset_variance = np.trace(K_tilde_p) / n
+        assert_almost_equal(nystrom_variance, subset_variance)
 
-    assert_almost_equal(nystrom_variance, subset_variance)
+    run_test(get_magic_data(n))
+    run_test(get_drug_data(n))
+    run_test(get_digits_data(n))
 
 
 def test_subset_errors():

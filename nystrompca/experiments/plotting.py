@@ -35,8 +35,6 @@ sns.set(style="darkgrid")
 sns.set_style({'font.family':'serif', 'font.serif':'Times New Roman'})
 
 
-SAVE_FOLDER = Path(os.environ['HOME'])
-
 
 def plot_results(results: pd.DataFrame) -> None:
     """

@@ -16,8 +16,8 @@ sys.path.insert(0, os.path.abspath('.'))
 project   = 'Nyström kernel PCA'
 copyright = '2021, Fredrik Hallgren'
 author    = 'Fredrik Hallgren'
-release   = '1.0.0'
-version   = '1.0.0'
+release   = '1.0.1'
+version   = '1.0.1'
 
 
 # -- General configuration ---------------------------------------------------

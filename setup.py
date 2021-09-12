@@ -8,7 +8,7 @@ with open("requirements.txt") as f:
 
 
 setup(name                 = "nystrompca",
-      version              = "1.0.0",
+      version              = "1.0.1",
       description          = "Kernel PCA with the Nyström method",
       author               = "Fredrik Hallgren",
       author_email         = "fredrik.hallgren@ucl.ac.uk",

@@ -52,16 +52,18 @@ class KernelPCR(KernelPCA, Regression):
         """
         y = to_column_vector(y)
 
+        y_bar = np.mean(y)
+
         self.fit_transform(X)
 
         j = np.where(self.explained_variance_ > 0)[0][-1]
         Lambda_inv = np.diag(1 / (self.n * self.explained_variance_[:j+1]))
 
-        self.beta = np.sqrt(Lambda_inv) @ self.Q[:,:j+1].T @ y
+        self.beta = np.sqrt(Lambda_inv) @ self.Q[:,:j+1].T @ (y - y_bar)
 
         self.beta = np.r_[self.beta, np.zeros((self.n_components-(j+1),1))]
 
-        self.alpha = np.mean(y) # type: ignore[assignment]
+        self.alpha = y_bar # type: ignore[assignment]
 
 
     def predict(self, X_new: np.ndarray) -> np.ndarray:

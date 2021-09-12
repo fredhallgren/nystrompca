@@ -65,14 +65,17 @@ class NystromKPCR(NystromKPCA, Regression):
         """
         y = to_column_vector(y)
 
+        y_bar = np.mean(y)
+
         self.fit_transform(X)
 
         self.j = np.where(self.explained_variance_ > 0)[0][-1]
         M_inv = np.diag(1 / (self.explained_variance_[:self.j+1] * self.n))
 
-        self.beta = M_inv @ self.components_.T[:self.j+1] @ self.K_nm_p.T @ y
+        U_d = self.components_.T[:self.j+1]
+        self.beta = M_inv @ U_d @ self.K_nm_p.T @ (y - y_bar)
 
-        self.alpha = np.mean(y) # type: ignore[assignment]
+        self.alpha = y_bar # type: ignore[assignment]
 
 
     def predict(self, X_new: np.ndarray) -> np.ndarray:

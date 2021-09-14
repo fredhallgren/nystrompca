@@ -30,7 +30,7 @@ import pandas as pd
 from sklearn.datasets import load_digits
 
 
-DATA_FOLDER = Path(__file__).parent.joinpath('../../data/')
+DATA_FOLDER = Path(__file__).parent.joinpath('../data/')
 
 
 def get_magic_data(n: int) -> np.ndarray:

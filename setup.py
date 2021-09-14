@@ -8,13 +8,13 @@ with open("requirements.txt") as f:
 
 
 setup(name                 = "nystrompca",
-      version              = "1.0.1",
+      version              = "1.0.2",
       description          = "Kernel PCA with the Nyström method",
       author               = "Fredrik Hallgren",
       author_email         = "fredrik.hallgren@ucl.ac.uk",
       url                  = "https://github.com/fredhallgren/nystrompca",
       packages             = find_packages(),
-      long_description     = """This package implements an efficient non-linear PCA by combining kernel PCA with the Nyström randomized subsampling method, as well as a confidence bound on the accuracy of the method. """,
+      long_description     = """This package implements an efficient non-linear PCA by combining kernel PCA with the Nyström randomized subsampling method, as well as a confidence bound on the accuracy of the method.\n\nPlease see www.github.com/fredhallgren/nystrompca for further details. """,
       long_description_content_type="text/plain",
       classifiers         = [
         "Programming Language :: Python :: 3",

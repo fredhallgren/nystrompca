@@ -3,7 +3,9 @@
 
 ![Release](img/release.svg) ![Build](img/build.svg) ![Coverage](img/coverage.svg)
 
-This package implements an _efficient non-linear PCA_ by combining kernel PCA with the Nyström randomized subsampling method. A confidence interval is calculated to allow for measuring the accuracy of the output and the method is also applied to the regression problem to create Nyström principal component regression.
+This package implements an _efficient non-linear PCA_ by combining kernel PCA with the Nyström randomized subsampling method and calculates a confidence interval to measure its accuracy. The method is also applied to the regression problem to create Nyström principal component regression.
+
+For further details please see my paper: https://arxiv.org/abs/2109.05578.
 
 
 #### Table of Contents

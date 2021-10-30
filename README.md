@@ -7,7 +7,6 @@ This package implements an _efficient non-linear PCA_ by combining kernel PCA wi
 
 For further details please see my paper: https://arxiv.org/abs/2109.05578.
 
-
 #### Table of Contents
 
 1. [Install](#cd-install)
@@ -16,6 +15,7 @@ For further details please see my paper: https://arxiv.org/abs/2109.05578.
 4. [Experiments](#telescope-experiments)
 5. [Documentation](#notebook-documentation)
 6. [Tests](#hammer-tests)
+7. [Citation](#memo-citation)
 
 
 ## :cd: Install
@@ -74,7 +74,7 @@ nystrompca/
 		logger.py
 ```
 
-The raw datasets used in the experiments are included in the folder `data/`  in the root directory. PCA and PCR examples in Jupyter notebooks are located in the `notebook_examples/` folder.
+The raw datasets used in the experiments are included in the folder `data/`. PCA and PCR examples in Jupyter notebooks are located in the `notebook_examples/` folder.
 
 The algorithms are implemented as objects with methods to fit and apply them, with an API like `scikit-learn`. The inheritance relationships among the algorithm classes and base classes are illustrated by the following UML diagram
 
@@ -288,3 +288,17 @@ Your code has been rated at 10.00/10
 ```
 
 Certain style rules are being ignored to adapt to the specific coding style of the package (please see `.pylintrc`).
+
+
+## :memo: Citation
+
+If you found this package interesting then please consider citing the paper, for example using the following with bibtex
+```
+@article{hallgren2021kernel,
+  title={Kernel PCA with the Nystr{\"o}m method},
+  author={Hallgren, Fredrik},
+  journal={arXiv preprint arXiv:2109.05578},
+  year={2021}
+}
+```
+

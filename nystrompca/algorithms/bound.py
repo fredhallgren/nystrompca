@@ -104,9 +104,7 @@ def calc_conf_bound(K_mm : np.ndarray,
     delta = np.log(2 / (1 - alpha))
 
     term1   = B * np.sqrt(2 * delta) / np.sqrt(n-m)
-    term2_1 = np.sqrt(2 * np.log(2))
-    term2_2 = 2 * np.sqrt(2 * np.pi) * norm.cdf(-np.sqrt(2*np.log(2)))
-    term2   = B**2 / np.sqrt(m) * (term2_1 + term2_2)
+    term2   = B**2 / np.sqrt(m)
     D = (n - m) / n * (term1 + term2)
 
     D_k = np.ones(len(eig_diff))

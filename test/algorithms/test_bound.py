@@ -29,9 +29,8 @@ def test_calc_conf_bound1():
     alpha = 0.5
     B     = 1
     
-    f = np.sqrt(2 * np.log(2))
     term1 = np.sqrt(2*np.log(4)) / np.sqrt(90)
-    term2 =  (f + 2*np.sqrt(2 * np.pi)*norm.cdf(-f)) / np.sqrt(10)
+    term2 =  1 / np.sqrt(10)
     D = 0.9 * (term1 + term2)
     
     expected_bounds = np.cumsum(L[:-1]/10) * D**2 + D ** 3
@@ -49,9 +48,8 @@ def test_calc_conf_bound2():
     alpha = 0.5
     B     = 10
     
-    f = np.sqrt(2 * np.log(2))
     term1 = 10 * np.sqrt(2*np.log(4)) / np.sqrt(10)
-    term2 =  100 * (f + 2*np.sqrt(2 * np.pi)*norm.cdf(-f)) / np.sqrt(10)
+    term2 =  100 / np.sqrt(10)
     D = 0.5 * (term1 + term2)
     
     expected_bounds = np.cumsum(L[:-1]/10) + D
@@ -69,9 +67,8 @@ def test_calc_conf_bound3():
     alpha = 0.9
     B     = 0.5
     
-    f = np.sqrt(2 * np.log(2))
     term1 = 0.5 * np.sqrt(2*np.log(20)) / np.sqrt(990)
-    term2 = 0.25 * (f + 2*np.sqrt(2 * np.pi)*norm.cdf(-f)) / np.sqrt(10)
+    term2 = 0.25 / np.sqrt(10)
     D = 0.99 * (term1 + term2)
     
     expected_bounds = np.cumsum(L[:-1]/10) * D**2 + D ** 3

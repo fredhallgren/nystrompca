@@ -33,7 +33,6 @@ where `$` is the command-line prompt. On Windows use `pip` instead of `pip3`.
 
 * Python 3.6 or above
 * Numpy 1.9 or above
-* Scipy 1.2.1 or above
 * Pandas 0.20 or above
 * Scikit-learn 0.19 or above
 * Matplotlib 2.0 or above
@@ -196,7 +195,7 @@ The package contains unit tests to test the code functionality and integration t
 
 #### Unit and integration tests
 
-The unit tests and integration tests are located in `nystrom_pca/test` and can be run with `pytest` or `nose`, e.g. on Linux/MacOS do
+The unit tests and integration tests are located in the folder `test/` and can be run with `pytest` or `nose`, e.g. on Linux/MacOS do
 
 ```bash
 $ pytest test/
@@ -295,7 +294,7 @@ Certain style rules are being ignored to adapt to the specific coding style of t
 If you found this package interesting then please consider citing the paper, for example using the following with bibtex
 ```
 @article{hallgren2021kernel,
-  title={Kernel PCA with the Nystr{\"o}m method},
+  title={Kernel {PCA} with the {N}ystr{\"o}m method},
   author={Hallgren, Fredrik},
   journal={arXiv preprint arXiv:2109.05578},
   year={2021}

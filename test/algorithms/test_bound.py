@@ -19,7 +19,6 @@ from nystrompca.base import Kernel
 
 import numpy as np
 from numpy.testing import assert_array_almost_equal
-from scipy.stats import norm
 
 
 def test_calc_conf_bound1():

@@ -21,7 +21,6 @@ empirical reconstruction error
 """
 
 import numpy as np
-from scipy.stats import norm
 
 from nystrompca.base import Kernel
 from nystrompca.utils import get_eigendecomposition

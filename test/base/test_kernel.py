@@ -83,4 +83,5 @@ def test_sigma():
 
     k.calc_sigma(X)
 
-    assert_almost_equal(k.sigma, 2.514, decimal=3)
+    assert_almost_equal(k.sigma, np.sqrt(8))
+

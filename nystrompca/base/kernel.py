@@ -106,10 +106,10 @@ class Kernel:
 
     def calc_sigma(self, X: np.ndarray):
         """
-        Calculate sigma based on a common heuristic
+        Calculate sigma based on the median heuristic
 
         Calculate the bandwidth parameter for the RBF and Cauchy kernels
-        as the average distance between all pairs of data points
+        as the median distance between all pairs of data points
 
         Parameters
         ----------
@@ -122,7 +122,7 @@ class Kernel:
         n = X.shape[0]
 
         pairwise_diff = np.tile(X, (n,1)) - X.repeat(n, axis=0)
-        sigma = np.sqrt((pairwise_diff**2).sum(1)).sum() / n**2
+        sigma = np.median(np.sqrt((pairwise_diff**2).sum(1)))
 
         # Reinitialize with new sigma
         self.__init__(self.name, sigma, self.degree, # type: ignore[misc]

@@ -117,7 +117,7 @@ def main(kernel:   str  = 'rbf',
 
         X = getattr(data, "get_" + dataset + "_data")(n)
 
-        results, t_nys, t_kpca = run_one_dataset(kernel, X, m, d,
+        results, t_nys, t_kpca = run_one_dataset(dataset, kernel, X, m, d,
                                                  ica, insample, seed)
         t_nys_tot  += t_nys
         t_kpca_tot += t_kpca
@@ -135,7 +135,8 @@ def main(kernel:   str  = 'rbf',
     return 0
 
 
-def run_one_dataset(kernel:   str,
+def run_one_dataset(dataset:  str,
+                    kernel:   str,
                     X:        np.ndarray,
                     m:        int,
                     d:        int,
@@ -147,6 +148,8 @@ def run_one_dataset(kernel:   str,
 
     Parameters
     ----------
+    dataset : str
+        The name of the dataset
     kernel : str
         Kernel function name
     X : numpy.ndarray, 2d
@@ -182,7 +185,7 @@ def run_one_dataset(kernel:   str,
     (results['Subset PCA'],
      results['Nystrom PCA'],
      t_nys,
-     sigma)                  = run_nystrom_kpca(X_train, X_test,
+     sigma)                  = run_nystrom_kpca(X_train, X_test, dataset,
                                                 kernel, m, d, seed)
 
     (results['Kernel PCA'],
@@ -205,6 +208,7 @@ def run_one_dataset(kernel:   str,
 
 def run_nystrom_kpca(X_train: np.ndarray,
                      X_test:  np.ndarray,
+                     dataset: str,
                      kernel:  str,
                      m:       int,
                      d:       int,
@@ -224,8 +228,10 @@ def run_nystrom_kpca(X_train: np.ndarray,
     X_test : numpy.ndarray, 2d
         Validation data set, with the same number of data dimensions
         as the training set
+    dataset: str
+        The name of the dataset
     kernel: str
-        kernel function name
+        Kernel function name
     m : int
         Size of Nyström subset
     d : int
@@ -247,13 +253,16 @@ def run_nystrom_kpca(X_train: np.ndarray,
     """
     variances = np.zeros(d)
 
-    nystrom_kpca = NystromKPCA(kernel=kernel, sigma=100, n_components=d,
+    sigma = 500
+    
+    nystrom_kpca = NystromKPCA(kernel=kernel, sigma=sigma, n_components=d,
                                m_subset=m, seed=seed)
 
-    # Calculate bandwidth parameter based on a common heuristic
-    nystrom_kpca.create_subset(X_train.shape[0])
-    nystrom_kpca.kernel.calc_sigma(X_train[nystrom_kpca.subset])
-    sigma = nystrom_kpca.kernel.sigma
+    # Calculate bandwidth parameter based on the median heuristic
+    if dataset not in ('dailykos', 'nips'):
+        nystrom_kpca.create_subset(X_train.shape[0])
+        nystrom_kpca.kernel.calc_sigma(X_train[nystrom_kpca.subset])
+        sigma = nystrom_kpca.kernel.sigma
 
     t0 = time.process_time()
     nystrom_kpca.fit_transform(X_train)

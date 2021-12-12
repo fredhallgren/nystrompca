@@ -75,7 +75,7 @@ def test_nystrom_accuracy():
 
         X = scale(X)
 
-        subset, nystrom, _, sigma = run_nystrom_kpca(X, X, 'rbf', m, d, None)
+        subset, nystrom, _, sigma = run_nystrom_kpca(X, X, '', 'rbf', m, d, None)
 
         kpca, _ = run_kernel_pca(X, X, 'rbf', d, sigma)
 

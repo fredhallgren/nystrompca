@@ -1,5 +1,5 @@
 
-# Copyright 2021 Fredrik Hallgren
+# Copyright 2022 Fredrik Hallgren
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,9 +28,7 @@ def test_calc_conf_bound1():
     alpha = 0.5
     B     = 1
     
-    term1 = np.sqrt(2*np.log(4)) / np.sqrt(90)
-    term2 =  1 / np.sqrt(10)
-    D = 0.9 * (term1 + term2)
+    D = 2 * 0.9 * np.sqrt(2*np.log(4)) / np.sqrt(90)
     
     expected_bounds = np.cumsum(L[:-1]/10) * D**2 + D ** 3
     expected_bounds = np.r_[expected_bounds, np.nan]
@@ -47,9 +45,7 @@ def test_calc_conf_bound2():
     alpha = 0.5
     B     = 10
     
-    term1 = 10 * np.sqrt(2*np.log(4)) / np.sqrt(10)
-    term2 =  100 / np.sqrt(10)
-    D = 0.5 * (term1 + term2)
+    D = 10 * np.sqrt(2*np.log(4)) / np.sqrt(10)
     
     expected_bounds = np.cumsum(L[:-1]/10) + D
     expected_bounds = np.r_[expected_bounds, np.nan]
@@ -66,9 +62,7 @@ def test_calc_conf_bound3():
     alpha = 0.9
     B     = 0.5
     
-    term1 = 0.5 * np.sqrt(2*np.log(20)) / np.sqrt(990)
-    term2 = 0.25 / np.sqrt(10)
-    D = 0.99 * (term1 + term2)
+    D = 0.99 * np.sqrt(2*np.log(20)) / np.sqrt(990)
     
     expected_bounds = np.cumsum(L[:-1]/10) * D**2 + D ** 3
     expected_bounds = np.r_[expected_bounds, np.nan]

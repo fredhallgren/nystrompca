@@ -1,5 +1,5 @@
 
-# Copyright 2021 Fredrik Hallgren
+# Copyright 2022 Fredrik Hallgren
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -99,12 +99,12 @@ def calc_conf_bound(K_mm : np.ndarray,
     L_m, _ = get_eigendecomposition(K_mm / m)
 
     eig_diff = L_m[:-1] - L_m[1:]
+    eig_diff = np.r_[np.inf, eig_diff[:-1].repeat(2), eig_diff[-1]]
+    eig_diff = eig_diff.reshape(L_m.shape[0]-1,2).min(1)
 
     delta = np.log(2 / (1 - alpha))
 
-    term1   = B * np.sqrt(2 * delta) / np.sqrt(n-m)
-    term2   = B**2 / np.sqrt(m)
-    D = (n - m) / n * (term1 + term2)
+    D = 2 * (n - m) / n * B * np.sqrt(2 * delta) / np.sqrt(n-m)
 
     D_k = np.ones(len(eig_diff))
     non_zero = eig_diff > 1e-14
@@ -112,6 +112,7 @@ def calc_conf_bound(K_mm : np.ndarray,
     D_k[D_k > 1] = 1
 
     max_D = np.array([np.max(D_k[:i+1]) for i in range(m-1)])
+
     bounds = np.cumsum(L_m[:-1] * D_k) + D * max_D
 
     # Add NaN for the last PCA dimension

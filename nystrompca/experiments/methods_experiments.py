@@ -253,7 +253,7 @@ def run_nystrom_kpca(X_train: np.ndarray,
     """
     variances = np.zeros(d)
 
-    sigma = 500
+    sigma = 500.0
     
     nystrom_kpca = NystromKPCA(kernel=kernel, sigma=sigma, n_components=d,
                                m_subset=m, seed=seed)

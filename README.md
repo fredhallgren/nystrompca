@@ -93,7 +93,7 @@ from nystrompca import NystromKPCA
 X = np.random.randn(1000, 100)
 
 nystrom_kpca = NystromKPCA(n_components=5, m_subset=10, kernel='rbf')
-X_kpca = nystrom_kpca.fit_transform(X) # Returns the principal scores
+X_kpca       = nystrom_kpca.fit_transform(X) # Returns the principal scores
 
 print(nystrom_kpca.explained_variance_) # Principal values
 
@@ -110,8 +110,8 @@ You can use the built-in method
 ```python
 from nystrompca import NystromKPCR
 
-X = np.random.randn(1000, 100)
-y = np.random.randn(1000, 1)
+X      = np.random.randn(1000, 100)
+y      = np.random.randn(1000, 1)
 x_test = np.random.randn(1, 100)
 
 nystrom_kpcr = NystromKPCR(n_components=5, m_subset=10, kernel='rbf')
@@ -126,12 +126,12 @@ Or indeed use any other supervised learning method!
 from sklearn.linear_model import LinearRegression
 
 nystrom_kpca = NystromKPCA(n_components=5, m_subset=10, kernel='rbf')
-X_kpca = nystrom_kpca.fit_transform(X)
+X_kpca       = nystrom_kpca.fit_transform(X)
 
 linear_regression = LinearRegression()
 linear_regression.fit(X_kpca, y)
 x_test_kpca = nystrom_kpca.transform(x_test)
-prediction = linear_regression.predict(x_test_kpca)
+prediction  = linear_regression.predict(x_test_kpca)
 ```
 
 
